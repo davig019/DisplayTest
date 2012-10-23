@@ -4,16 +4,17 @@ import java.awt.Graphics;
 
 public class SpriteLayer {
 
-	Sprite sprites[];
+	Sprite[] sprites;
 	int sprn = 0; 
 	
 	public SpriteLayer(){
-		sprites = new Sprite[100];
+		sprites = new Sprite[1000];
 	}
 	
 	public void addSprite(Sprite spr){
 		sprites[sprn]=spr;
 		sprn++;
+		spr.parent = this;
 	}
 	
 	public void draw( Graphics g ){
@@ -22,6 +23,10 @@ public class SpriteLayer {
 				s.draw(g);
 			}
 		}
+	}
+	
+	public Sprite[] getSprites(){
+		return sprites;
 	}
 	
 	public void update(){
